@@ -13,7 +13,6 @@
     />
   </head>
   <body>
-    <h2 class="u-semibold u-fs-xl">Hello, World!</h2>
     <script src="https://static.zdassets.com/zendesk_app_framework_sdk/2.0/zaf_sdk.min.js"></script>
     <script>
       // Initialise Apps framework client. See also:
@@ -25,5 +24,34 @@
         console.log(metadata.settings);
       });
     </script>
+
+    <h2 class="u-semibold u-fs-xl">Hello, World!</h2>
+    <div class="u-m u-fg-grey-800">
+      <div class="container-fluid">
+        <div class="row no-gutters">
+          <div class="col">
+            <div class="c-txt u-mb-sm">
+              <label class="c-txt__label" for="txt-1">Title</label>
+              <small class="c-txt__hint">Hint text...</small>
+              <input class="c-txt__input" id="txt-1" placeholder="title" type="text">
+            </div>
+          </div>
+          <div class="col">
+            <div class="c-txt u-mb-sm">
+              <label class="c-txt__label" for="txt-2">Summary</label>
+              <small class="c-txt__hint">Hint text...</small>
+              <input class="c-txt__input" id="txt-2" placeholder="summary" type="text">
+            </div>
+          </div>
+          <div class="col">
+            <div class="c-txt u-mb-sm">
+              <label class="c-txt__label" for="txt-3">Severity</label>
+              <small class="c-txt__hint">Hint text...</small>
+              <input class="c-txt__input" id="txt-3" placeholder="severity" type="text">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

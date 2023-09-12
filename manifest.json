@@ -15,11 +15,14 @@
       }
     }
   },
-  "version": "1.0.0",
-  "frameworkVersion": "2.0",
-  "app": {
-    "parameters": {
-      "apiKey": { "label": "Api Key" }
+  "parameters": [
+    {
+      "name": "Token",
+      "type": "text",
+      "secure": true,
+      "required": true
     }
-  }
+  ],
+  "version": "1.0.0",
+  "frameworkVersion": "2.0"
 }
