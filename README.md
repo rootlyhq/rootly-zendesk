@@ -1,9 +1,4 @@
-*Use of this software is subject to important terms and conditions as set forth in the License file*
-
-# React App Scaffold
-
-## Description
-This repo contains a scaffold to help developers build [apps for Zendesk products](https://developer.zendesk.com/apps/docs/apps-v2/getting_started).
+# Rootly Zendesk App
 
 ## Getting Started
 
@@ -13,8 +8,7 @@ This repo contains a scaffold to help developers build [apps for Zendesk product
 
 ### Setup
 1. Clone or fork this repo
-2. Change (`cd`) into the `app_scaffolds/packages/react` directory
-3. Run `yarn install`
+2. Run `yarn install`
 
 To run your app locally in Zendesk, you need the latest [Zendesk CLI](https://github.com/zendesk/zcli).
 
@@ -25,37 +19,10 @@ To serve the app to your Zendesk instance with `?zcli_apps=true`, open a new ter
 ```
 yarn run watch
 ```
-and then open a new terminal under `apps_scaffolds/packages/react` directory and run
+and then open a new terminal and run
 ```
 zcli apps:server dist
 ```
-
-## But why?
-The App Scaffold includes many features to help you maintain and scale your app. Some of the features provided by the App Scaffold are listed below. However, you don't need prior experience in any of these to be able to use the scaffold successfully.
-
-- [ES6 (ES2015)](https://babeljs.io/docs/learn-es2015/)
-
-ECMAScript 6, also known as ECMAScript 2015, is the latest version of the ECMAScript standard. The App Scaffold includes the [Babel compiler](https://babeljs.io/) to transpile your code to ES5. This allows you to use ES6 features, such as classes, arrow functions and template strings even in browsers that haven't fully implemented these features.
-
-- [Zendesk Garden](https://garden.zendesk.com/) React UI components
-
-Collection of React components for Zendesk products. You’ll find components built to respond to a range of user input devices, tuned to handle right-to-left layouts, and finessed with just the right touch of subtle animation.
-
-- [Webpack 5](https://webpack.github.io/) module bundler
-
-Webpack is a module bundler, we use it to bundle up Javascript modules for use as web applications, also to perform tasks like transforming and transpiling, etc.
-
-- [PostCSS](https://postcss.org//) stylesheets
-
-PostCSS transforms stylesheets with JS plugins. These plugins can lint your CSS, support variables and mixins, transpile future CSS syntax, inline images, and more.
-
-- [StandardJS](https://standardjs.com/) JS linting
-
-StandardJS is a Javascript style guide, it helps catching style issues or code errors, and automatically formats code for you.
-
-- [Jest](https://jestjs.io/) Javascript testing framework
-
-Jest is bundled with JSDom and built on top of Jasmine. It's more than just a ReactJS testing framework. In the Zendesk Apps team, we use it for unit and integration testing of the Official Apps. It also includes a good test coverage toolset out of the box.
 
 ## Folder structure
 
@@ -181,25 +148,8 @@ For more information on the Zendesk CLI please see the [documentation](https://d
 ## External Dependencies
 External dependencies are defined in [webpack.config.js](https://github.com/zendesk/app_scaffolds/blob/master/packages/react/webpack.config.js). This ensures these dependencies are included in your app's `index.html`.
 
-## Contribute
-* Put up a PR into the master branch.
-* CC and get a +1 from @zendesk/vegemite.
-
-## Bugs
-Submit Issues via [GitHub](https://github.com/zendesk/app_scaffolds/issues/new) or email support@zendesk.com.
-
 ## Useful Links
 Links to maintaining team, confluence pages, Datadog dashboard, Kibana logs, etc
 - https://developer.zendesk.com/
 - https://github.com/zendesk/zendesk_apps_tools
-- https://webpack.github.io
 - https://developer.zendesk.com/documentation/apps/build-an-app/using-react-in-a-support-app/
-
-## Copyright and license
-Copyright 2018 Zendesk
-
-Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with the License.
-
-You may obtain a copy of the License at
-http://www.apache.org/licenses/LICENSE-2.0
-Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the specific language governing permissions and limitations under the License.

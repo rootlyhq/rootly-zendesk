@@ -1,14 +1,15 @@
 {
-  "name": "app_scaffold",
-  "version": "2.0.0",
-  "description": "A scaffold for developers to build ZAF v2 apps",
+  "name": "rootly-zendesk",
+  "version": "1.0.0",
+  "description": "The Rootly Zendesk ZAF v2 app.",
   "keywords": [
+    "rootly",
     "zendesk",
     "app",
     "framework"
   ],
-  "author": "Zendesk",
-  "license": "Apache-2.0",
+  "author": "Rootly",
+  "license": "UNLICENSED",
   "engines": {
     "node": ">=18.12.1"
   },
