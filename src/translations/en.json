@@ -1,0 +1,12 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "Create and link Rootly incidents.",
+    "long_description": "Create and link Rootly incidents from Zendesk's ticket sidebar.",
+    "installation_instructions": "Configure the following app settings, then click Install:...",
+    "title": "Rootly"
+  },
+  "default": {
+    "organizations": "organizations"
+  }
+}
