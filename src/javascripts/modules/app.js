@@ -1,5 +1,5 @@
 /**
- *  Example app
+ *  Rootly Zendesk app
  **/
 import React from 'react'
 import { render } from 'react-dom'
@@ -10,9 +10,6 @@ import I18n from '../../javascripts/lib/i18n'
 import { resizeContainer, escapeSpecialChars as escape } from '../../javascripts/lib/helpers'
 
 const MAX_HEIGHT = 1000
-const API_ENDPOINTS = {
-  organizations: '/api/v2/organizations.json'
-}
 
 class App {
   constructor (client, _appData) {
@@ -28,14 +25,9 @@ class App {
    */
   async init () {
     const currentUser = (await this._client.get('currentUser')).currentUser
+    const rootlyApiKey = (await this._client.metadata()).settings.apiKey
 
     I18n.loadTranslations(currentUser.locale)
-
-    const organizationsResponse = await this._client
-      .request(API_ENDPOINTS.organizations)
-      .catch(this._handleError.bind(this))
-
-    const organizations = organizationsResponse ? organizationsResponse.organizations : []
 
     const appContainer = document.querySelector('.main')
 
@@ -43,20 +35,8 @@ class App {
       <ThemeProvider theme={{ ...DEFAULT_THEME }}>
         <Grid>
           <Row>
-            <Col data-test-id='sample-app-description'>
-              Hi {escape(currentUser.name)}, this is a sample app
-            </Col>
-          </Row>
-          <Row>
-            <Col>
-              <span>{I18n.t('default.organizations')}:</span>
-              <UnorderedList data-test-id='organizations'>
-                {organizations.map(organization => (
-                  <UnorderedList.Item key={`organization-${organization.id}`} data-test-id={`organization-${organization.id}`}>
-                    {escape(organization.name)}
-                  </UnorderedList.Item>
-                ))}
-              </UnorderedList>
+            <Col data-testid='app-intro'>
+              Your Rootly API key is {escape(rootlyApiKey)}
             </Col>
           </Row>
         </Grid>
