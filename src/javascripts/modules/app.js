@@ -1,58 +1,27 @@
-/**
- *  Rootly Zendesk app
- **/
 import React from 'react'
-import { render } from 'react-dom'
-import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming'
-import { Grid, Row, Col } from '@zendeskgarden/react-grid'
-import { UnorderedList } from '@zendeskgarden/react-typography'
+import { createRoot } from 'react-dom/client'
 import I18n from '../../javascripts/lib/i18n'
 import { resizeContainer, escapeSpecialChars as escape } from '../../javascripts/lib/helpers'
+import App from '../../javascripts/components/app'
 
 const MAX_HEIGHT = 1000
 
-class App {
-  constructor (client, _appData) {
-    this._client = client
+export async function start(zafClient, root) {
+  const currentUser = (await zafClient.get('currentUser')).currentUser
 
-    // this.initializePromise is only used in testing
-    // indicate app initilization(including all async operations) is complete
-    this.initializePromise = this.init()
+  if (!root) {
+    root = createRoot(document.querySelector('.main'))
   }
 
-  /**
-   * Initialize module, render main template
-   */
-  async init () {
-    const currentUser = (await this._client.get('currentUser')).currentUser
-    const rootlyApiKey = (await this._client.metadata()).settings.apiKey
+  I18n.loadTranslations(currentUser.locale)
 
-    I18n.loadTranslations(currentUser.locale)
+  const subdomain = await zafClient.context().then(({ account: {subdomain} }) => subdomain)
+  const metadata = await zafClient.metadata()
+  const settings = { subdomain, ...metadata.settings }
+  const ticket = await zafClient.get("ticket").then(({ ticket }) => ticket)
 
-    const appContainer = document.querySelector('.main')
+  ticket.id = ticket.id.toString()
+  ticket.url = `https://${settings.subdomain}.zendesk.com/agent/tickets/${ticket.id}`
 
-    render(
-      <ThemeProvider theme={{ ...DEFAULT_THEME }}>
-        <Grid>
-          <Row>
-            <Col data-testid='app-intro'>
-              Your Rootly API key is {escape(rootlyApiKey)}
-            </Col>
-          </Row>
-        </Grid>
-      </ThemeProvider>,
-      appContainer
-    )
-    return resizeContainer(this._client, MAX_HEIGHT)
-  }
-
-  /**
-   * Handle error
-   * @param {Object} error error object
-   */
-  _handleError (error) {
-    console.log('An error is handled here: ', error.message)
-  }
+  root.render(<App settings={settings} ticket={ticket} zafClient={zafClient} />)
 }
-
-export default App

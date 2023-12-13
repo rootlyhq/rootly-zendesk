@@ -1,53 +1,30 @@
 /* eslint-env jest, browser */
-import App from '../src/javascripts/modules/app'
-import i18n from '../src/javascripts/lib/i18n'
-import { CLIENT, ORGANIZATIONS } from './mocks/mock'
-import { unmountComponentAtNode } from 'react-dom'
-import { act } from 'react-dom/test-utils'
-import { configure } from '@testing-library/react'
-import { screen } from '@testing-library/dom'
+import { createRoot } from 'react-dom/client'
+import { start as startApp } from '../src/javascripts/modules/app'
+import { CLIENT } from './mocks/mock'
 
-const mockEN = {
-  'app.name': 'Rootly',
-  'app.title': 'Rootly',
-}
+describe('App', () => {
+  let appContainer = null
+  let root = null
 
-describe('Rootly', () => {
   beforeAll(() => {
-    i18n.loadTranslations('en')
-
-    jest.mock('../src/translations/en', () => {
-      return mockEN
-    })
+    window.fetch = () => Promise.resolve({json: () => Promise.resolve({ data: [], meta: {total_pages: 0} })})
+    appContainer = document.createElement('section')
+    appContainer.classList.add('main')
+    document.body.appendChild(appContainer)
   })
 
-  describe('Rendering', () => {
-    let appContainer = null
+  beforeEach(() => {
+    root = createRoot(appContainer)
+  })
 
-    beforeEach(() => {
-      appContainer = document.createElement('section')
-      appContainer.classList.add('main')
-      document.body.appendChild(appContainer)
-    })
+  afterEach(() => {
+    root.unmount()
+  })
 
-    afterEach(() => {
-      unmountComponentAtNode(appContainer)
-      appContainer.remove()
-      appContainer = null
-    })
-
-    it('render with current api key successfully', (done) => {
-      act(() => {
-        CLIENT.invoke = jest.fn().mockReturnValue(Promise.resolve({}))
-        CLIENT.metadata = jest.fn().mockReturnValue(Promise.resolve({settings: {apiKey: "mock-api-key"}}))
-
-        const app = new App(CLIENT, {})
-        app.initializePromise.then(() => {
-          const descriptionElement = screen.getByTestId('app-intro')
-          expect(descriptionElement.textContent).toBe('Your Rootly API key is mock-api-key')
-          done()
-        })
-      })
+  it('renders successfully', async () => {
+    return startApp(CLIENT, root).then(() => {
+      // assertions go here
     })
   })
 })

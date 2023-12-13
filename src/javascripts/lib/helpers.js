@@ -1,44 +1,5 @@
-/**
- * Resize App container
- * @param {ZAFClient} client ZAFClient object
- * @param {Number} max max height available to resize to
- * @return {Promise} will resolved after resize
- */
-export function resizeContainer (client, max = Number.POSITIVE_INFINITY) {
-  const newHeight = Math.min(document.body.clientHeight, max)
-  return client.invoke('resize', { height: newHeight })
-}
+const version = require('../../../package.json').version
 
-/**
- * Helper to render a dataset using the same template function
- * @param {Array} set dataset
- * @param {Function} getTemplate function to generate template
- * @param {String} initialValue any template string prepended
- * @return {String} final template
- */
-export function templatingLoop (set, getTemplate, initialValue = '') {
-  return set.reduce((accumulator, item, index) => {
-    return `${accumulator}${getTemplate(item, index)}`
-  }, initialValue)
-}
-
-/**
- * Render template
- * @param {String} replacedNodeSelector selector of the node to be replaced
- * @param {String} htmlString new html string to be rendered
- */
-export function render (replacedNodeSelector, htmlString) {
-  const fragment = document.createRange().createContextualFragment(htmlString)
-  const replacedNode = document.querySelector(replacedNodeSelector)
-
-  replacedNode.parentNode.replaceChild(fragment, replacedNode)
-}
-
-/**
- * Helper to escape unsafe characters in HTML, including &, <, >, ", ', `, =
- * @param {String} str String to be escaped
- * @return {String} escaped string
- */
 export function escapeSpecialChars (str) {
   if (typeof str !== 'string') throw new TypeError('escapeSpecialChars function expects input in type String')
 
@@ -53,4 +14,64 @@ export function escapeSpecialChars (str) {
   }
 
   return str.replace(/[&<>"'`=]/g, function (m) { return escape[m] })
+}
+/**
+ * {
+ *   name: 'test app',
+ *   author: {
+ *     title: 'the author',
+ *     value: 'mr programmer'
+ *   },
+ *   app: {
+ *     instructions: 'install',
+ *     steps: {
+ *       click: 'this button'
+ *     }
+ *   }
+ * }
+ *
+ * becomes
+ *
+ * {
+ *   name: 'test app',
+ *   author: 'mr programmer',
+ *   app.instructions: 'install',
+ *   app.steps.click: 'this button'
+ * }
+ */
+/* eslint-disable array-callback-return */
+function translationFlatten (object, currentKeys = []) {
+  const res = {}
+
+  Object.keys(object).map(
+    key => {
+      const value = object[key]
+
+      if (typeof value === 'object') {
+        if (value.title && value.value) {
+          const flattenedKey = [...currentKeys, key].join('.')
+          res[flattenedKey] = value.value
+        } else {
+          Object.assign(
+            res,
+            translationFlatten(value, [...currentKeys, key])
+          )
+        }
+      } else {
+        const flattenedKey = [...currentKeys, key].join('.')
+        res[flattenedKey] = value
+      }
+    }
+  )
+
+  return res
+}
+/* eslint-enable array-callback-return */
+
+export function debounce (fn, ms) {
+  let timeout = null
+  return (...args) => {
+    if (timeout) clearTimeout(timeout)
+    timeout = setTimeout(() => fn(...args), ms)
+  }
 }

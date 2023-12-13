@@ -11,5 +11,25 @@
         "helpText": "Generate Rootly API keys at [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
       }
     }
+  },
+  "incidents": {
+    "attached": {
+      "header": "Attached incidents",
+      "none": "No Rootly incidents attached to this ticket."
+    },
+    "recent": {
+      "header": "Recent incidents",
+      "search": "Search incidents",
+      "none": "No recent Rootly incidents.",
+      "none_found": "No Rootly incidents found for \"%{query}\"."
+    }
+  },
+  "buttons": {
+    "create_incident": "Create incident",
+    "creating_incident": "Creating incident...",
+    "attach": "Attach",
+    "attaching": "Attaching...",
+    "detach": "Detach",
+    "detaching": "Detaching..."
   }
 }

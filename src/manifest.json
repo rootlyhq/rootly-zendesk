@@ -15,7 +15,18 @@
       }
     }
   },
+  "domainWhitelist": [
+    "api.rootly.com",
+    "rootly.com"
+  ],
   "parameters": [
+    {
+      "name": "apiUrl",
+      "required": true,
+      "secure": true,
+      "default": "https://api.rootly.com/v1",
+      "type": "hidden"
+    },
     {
       "name": "apiKey",
       "required": true,

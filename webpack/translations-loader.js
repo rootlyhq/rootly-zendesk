@@ -65,4 +65,6 @@ function TranslationsLoader (content) {
   return `module.exports = ${JSON.stringify(compiledTranslations)}`
 }
 
+TranslationsLoader.flatten = translationFlatten
+
 module.exports = TranslationsLoader

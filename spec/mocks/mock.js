@@ -9,18 +9,34 @@ export const CLIENT = {
         }
       })
     }
+    if (prop === 'ticket') {
+      return Promise.resolve({
+        ticket: {
+          id: 10,
+        }
+      })
+    }
     return Promise.resolve({
       [prop]: null
     })
+  },
+  invoke: () => Promise.resolve({}),
+  context: () => {
+    return Promise.resolve({
+      account: {
+        subdomain: "test"
+      }
+    })
+  },
+  metadata: () => {
+    return Promise.resolve({
+      settings: {
+        apiKey: "mock-api-key",
+        apiUrl: "http://api.test.com"
+      }
+    })  
+  },
+  request: () => {
+    return Promise.resolve({data: []})
   }
-}
-
-export const ORGANIZATIONS = {
-  organizations: [
-    { id: 1, name: 'Organization A' },
-    { id: 2, name: 'Organization B' }
-  ],
-  next_page: null,
-  previous_page: null,
-  count: 1
 }
