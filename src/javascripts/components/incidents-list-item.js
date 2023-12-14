@@ -29,7 +29,7 @@ export default function IncidentsListItem({ incident }) {
   return (
     <Card>
       <Row alignItems="center" justifyContent="between">
-        <Col size={9}>
+        <Col size={8}>
           <Row>
             <Anchor href={incident.url} isExternal>
               <Span isBold>#{incident.sequential_id}</Span> {incident.title}
@@ -43,7 +43,7 @@ export default function IncidentsListItem({ incident }) {
             <Span hue="grey" size="small" style={{marginTop: "1em"}}>{startedAtDate} {startedAtTime}</Span>
           </Row>
         </Col>
-        <Col size={3} textAlign="end">
+        <Col size={4} textAlign="end">
           <Button onClick={() => dispatch(toggleAttached(incident))} size="small" style={{flex: "none"}}>
             <Button.StartIcon>{syncing ? (<Dots />) : (attached ? <MinusIcon /> : <PlusIcon />)}</Button.StartIcon>
             {I18n.t(`buttons.${attached ? "detach" : "attach"}${syncing ? "ing" : ""}`)}
