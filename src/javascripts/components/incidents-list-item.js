@@ -16,10 +16,14 @@ export default function IncidentsListItem({ incident }) {
   const syncing = useSelector((state) => state.incidents.entities[incident.id].syncing)
   const ticket = useSelector((state) => state.ticket)
   const attached = incident.zendesk_ticket_id === ticket.id
-  const startedAt = new Date(incident.started_at).toLocaleDateString(undefined, {
+  const startedAtDate = new Date(incident.started_at).toLocaleDateString(undefined, {
     year: "numeric",
     month: "short",
     day: "numeric"
+  })
+  const startedAtTime = new Date(incident.started_at).toLocaleTimeString(undefined, {
+    hour: "numeric",
+    minute: "numeric"
   })
 
   return (
@@ -33,7 +37,7 @@ export default function IncidentsListItem({ incident }) {
           </Row>
           <Row alignItems="center">
             <Tag isPill style={{marginRight: "1em"}}>{formattedStatus(incident.status)}</Tag>
-            <Span hue="grey" size="small">{startedAt}</Span>
+            <Span hue="grey" size="small">{startedAtDate} {startedAtTime}</Span>
           </Row>
         </Col>
         <Col size={4} textAlign="end">
