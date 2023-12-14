@@ -3,7 +3,7 @@
   "author": {
     "name": "Rootly",
     "email": "support@rootly.com",
-    "url": "https://www.rootly.com/"
+    "url": "https://rootly.com/"
   },
   "defaultLocale": "en",
   "private": true,
@@ -17,13 +17,13 @@
   },
   "domainWhitelist": [
     "api.rootly.com",
-    "rootly.com"
+    "rootly.com",
+    "alexm.rootly.in.ngrok.io"
   ],
   "parameters": [
     {
       "name": "apiUrl",
       "required": true,
-      "secure": true,
       "default": "https://api.rootly.com/v1",
       "type": "hidden"
     },
