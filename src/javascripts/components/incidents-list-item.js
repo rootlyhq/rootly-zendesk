@@ -29,18 +29,21 @@ export default function IncidentsListItem({ incident }) {
   return (
     <Card>
       <Row alignItems="center" justifyContent="between">
-        <Col size={8}>
-          <Row style={{marginBottom: "1em"}}>
+        <Col size={9}>
+          <Row>
             <Anchor href={incident.url} isExternal>
               <Span isBold>#{incident.sequential_id}</Span> {incident.title}
             </Anchor>
           </Row>
           <Row alignItems="center">
-            <Tag isPill style={{marginRight: "1em"}} hue={statusHue(incident.status)}>{formattedStatus(incident.status)}</Tag>
-            <Span hue="grey" size="small">{startedAtDate} {startedAtTime}</Span>
+            <Tag isPill style={{margin: "1em 1em 0 0"}} hue={statusHue(incident.status)}>{formattedStatus(incident.status)}</Tag>
+            {incident.severity && <Tag isPill style={{margin: "1em 1em 0 0"}} hue={statusHue(incident.severity.data.attributes.severity)}>{incident.severity.data.attributes.name}</Tag>}
+          </Row>
+          <Row alignItems="center">
+            <Span hue="grey" size="small" style={{marginTop: "1em"}}>{startedAtDate} {startedAtTime}</Span>
           </Row>
         </Col>
-        <Col size={4} textAlign="end">
+        <Col size={3} textAlign="end">
           <Button onClick={() => dispatch(toggleAttached(incident))} size="small" style={{flex: "none"}}>
             <Button.StartIcon>{syncing ? (<Dots />) : (attached ? <MinusIcon /> : <PlusIcon />)}</Button.StartIcon>
             {I18n.t(`buttons.${attached ? "detach" : "attach"}${syncing ? "ing" : ""}`)}
