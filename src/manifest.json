@@ -1,9 +1,9 @@
 {
   "name": "Rootly",
   "author": {
-    "name": "Rootly Inc.",
+    "name": "Rootly",
     "email": "support@rootly.com",
-    "url": "https://rootly.com"
+    "url": "https://rootly.com/"
   },
   "defaultLocale": "en",
   "private": true,
@@ -15,14 +15,22 @@
       }
     }
   },
+  "domainWhitelist": [
+    "api.rootly.com"
+  ],
   "parameters": [
     {
-      "name": "Token",
-      "type": "text",
+      "name": "apiUrl",
+      "default": "https://api.rootly.com/v1",
+      "type": "hidden"
+    },
+    {
+      "name": "apiKey",
+      "required": true,
       "secure": true,
-      "required": true
+      "type": "text"
     }
   ],
-  "version": "1.0.0",
+  "version": "1.0",
   "frameworkVersion": "2.0"
 }
