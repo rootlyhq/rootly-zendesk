@@ -47,12 +47,7 @@ class RootlyApi {
       body: params && method !== "GET" ? JSON.stringify(params) : null
     })
     .then((res) => res.json())
-    .then((res) => {
-      if (res.errors) {
-        return Promise.reject(new Error(res.errors[0].title))
-      }
-      return res
-    })
+    .then(handleRespError)
   }
 
   // use ZAF proxy to avoid exposing API key in production, doesn't work in local development environment
@@ -63,20 +58,25 @@ class RootlyApi {
       cors: false,      
       secure: true,
       headers: {
-        "Authorization": "Bearer {{settings.apiKey}}",
+        "Authorization": "Bearer {{setting.apiKey}}",
         "X-User-Agent": `Rootly Zendesk App ${version}`, // ZAF proxy doesn't allow setting User-Agent
         "Accepts": "application/vnd.api+json",
         "Content-Type": "application/vnd.api+json"
       },
+      dataType: "json",
       data: params && method !== "GET" ? JSON.stringify(params) : null
     })
-    .then((res) => {
-      if (res.errors) {
-        return Promise.reject(new Error(res.errors[0].title))
-      }
-      return res
-    })
+    .then(handleRespError)
   }
+}
+
+function handleRespError(res) {
+  if (res.errors) {
+    const error = new Error(res.errors[0].title)
+    error.api = true
+    return Promise.reject(error)
+  }
+  return res
 }
 
 export default new RootlyApi()
