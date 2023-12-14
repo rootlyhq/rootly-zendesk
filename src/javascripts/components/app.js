@@ -5,8 +5,8 @@ import { createStore } from '../../javascripts/redux/store'
 import { loadIncidents } from '../../javascripts/redux/slices/incidents'
 import Incidents from '../../javascripts/components/incidents'
 
-export default function App({ settings, ticket, zafClient }) {
-  const store = createStore({ settings, ticket })
+export default function App({ ticket, zafClient }) {
+  const store = createStore({ ticket })
 
   store.subscribe(() => {
     setTimeout(() => {

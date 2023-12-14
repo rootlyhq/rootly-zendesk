@@ -12,7 +12,7 @@ export default function ErrorNotice() {
   return (
     <Alert type="error">
       <Title>Error</Title>
-      {error.message}
+      {error.message || "Internal error occurred. Please try again or contact Rootly support."}
       <Close aria-label="Dismiss error alert" onClick={() => dispatch(clearError())}/>
     </Alert>
   )

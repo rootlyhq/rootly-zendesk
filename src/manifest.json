@@ -17,13 +17,11 @@
   },
   "domainWhitelist": [
     "api.rootly.com",
-    "rootly.com",
-    "alexm.rootly.in.ngrok.io"
+    "rootly.com"
   ],
   "parameters": [
     {
       "name": "apiUrl",
-      "required": true,
       "default": "https://api.rootly.com/v1",
       "type": "hidden"
     },

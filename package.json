@@ -74,6 +74,7 @@
     "@zendeskgarden/react-tooltips": "^8.62.0",
     "@zendeskgarden/react-typography": "^8.62.0",
     "node-gyp": "^9.3.0",
+    "qs": "^6.11.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.0.4",

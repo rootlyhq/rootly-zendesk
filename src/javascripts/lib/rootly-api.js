@@ -1,17 +1,21 @@
+import qs from 'qs'
+
 const version = require('../../../package.json').version
 
+let zafClient = null
+
 class RootlyApi {
-  /**
-   * @param {String} apiUrl
-   * @param {String} apiKey
-   */
-  constructor({ apiUrl, apiKey }) {
-    this.apiUrl = apiUrl
-    this.apiKey = apiKey
+  initialize(zafClient) {
+    this.zafClient = zafClient
+    return this.zafClient.metadata().then(({ settings: {apiUrl, apiKey} }) => {
+      this.apiUrl = apiUrl
+      this.apiKey = apiKey
+      this.secure = apiUrl === "https://api.rootly.com/v1" || !apiKey
+    })
   }
 
-  get(url) {
-    return this.request("GET", url)
+  get(url, params) {
+    return this.request("GET", url, params)
   }
 
   post(url, body) {
@@ -22,16 +26,25 @@ class RootlyApi {
     return this.request("PATCH", url, body)
   }
 
-  request(method, url, body) {
-    return fetch(`${this.apiUrl}${url}`, {
+  request(method, url, params) {
+    if (this.secure) {
+      return this.requestZafProxy(method, url, params)
+    } else {
+      return this.requestFetch(method, url, params)
+    }
+  }
+
+  requestFetch(method, url, params) {
+    return fetch(`${this.apiUrl}${url}${method === "GET" && params ? `?${qs.stringify(params)}` : ''}`, {
       method: method,
+      cors: false,      
       headers: {
         "Authorization": `Bearer ${this.apiKey}`,
-        "User-Agent": `Rootly Zendesk App ${version}`,
+        "X-User-Agent": `Rootly Zendesk App ${version}`,
         "Accepts": "application/vnd.api+json",
         "Content-Type": "application/vnd.api+json"
       },
-      body: typeof body === "object" ? JSON.stringify(body) : body
+      body: params && method !== "GET" ? JSON.stringify(params) : null
     })
     .then((res) => res.json())
     .then((res) => {
@@ -41,8 +54,29 @@ class RootlyApi {
       return res
     })
   }
+
+  // use ZAF proxy to avoid exposing API key in production, doesn't work in local development environment
+  requestZafProxy(method, url, params) {
+    return this.zafClient.request({
+      url: `${this.apiUrl}${url}${method === "GET" && params ? `?${qs.stringify(params)}` : ''}`,
+      type: method,
+      cors: false,      
+      secure: true,
+      headers: {
+        "Authorization": "Bearer {{settings.apiKey}}",
+        "X-User-Agent": `Rootly Zendesk App ${version}`, // ZAF proxy doesn't allow setting User-Agent
+        "Accepts": "application/vnd.api+json",
+        "Content-Type": "application/vnd.api+json"
+      },
+      data: params && method !== "GET" ? JSON.stringify(params) : null
+    })
+    .then((res) => {
+      if (res.errors) {
+        return Promise.reject(new Error(res.errors[0].title))
+      }
+      return res
+    })
+  }
 }
 
-export default function(settings) {
-  return new RootlyApi(settings)
-}
+export default new RootlyApi()

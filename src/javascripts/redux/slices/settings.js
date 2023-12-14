@@ -2,7 +2,6 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   apiUrl: 'https://api.rootly.com/v1',
-  apiKey: null
 }
 
 const settingsSlice = createSlice({
