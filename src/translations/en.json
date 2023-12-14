@@ -1,14 +1,14 @@
 {
   "app": {
     "name": "Rootly",
-    "short_description": "Create and link Rootly incidents.",
-    "long_description": "Create and link Rootly incidents from Zendesk's ticket sidebar.",
-    "installation_instructions": "Configure the following app settings, then click Install.",
+    "short_description": "View Rootly incidents and attach tickets",
+    "long_description": "Connect support agents to Rootly with a view of recent and related incidents inside Zendesk.\n\n- Attach tickets to new or existing incidents\n- View recent incidents\n- Create new incidents\n\nFor more information refer to [Rootly's Zendesk integration documentation](https://docs.rootly.com/integrations/zendesk).",
+    "installation_instructions": "Click the Install button above to install the Rootly Zendesk app. Then go to [rootly.com/account/api-keys](https://rootly.com/account/api-keys) and generate an API key to use when configuring the app.",
     "title": "Rootly",
     "parameters": {
       "apiKey": {
-        "label": "API key",
-        "helpText": "Generate Rootly API keys at [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
+        "label": "Rootly API key",
+        "helpText": "Generate a Rootly API key at [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
       }
     }
   },
