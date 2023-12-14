@@ -16,8 +16,7 @@
     }
   },
   "domainWhitelist": [
-    "api.rootly.com",
-    "rootly.com"
+    "api.rootly.com"
   ],
   "parameters": [
     {
