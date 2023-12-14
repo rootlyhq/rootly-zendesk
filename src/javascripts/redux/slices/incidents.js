@@ -1,5 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import rootlyApiClient from '../../lib/rootly-api'
+import { setError } from './error'
 
 const initialState = {
   loading: true,
@@ -61,65 +62,96 @@ export const toggleAttached = (incident) => async (dispatch, getState) => {
   dispatch(setIncident({ ...incident, ...changedAttributes, syncing: false }))
 }
 
-export const loadIncidents = () => async (dispatch, getState) => {
+export const loadIncidents = () => (dispatch, getState) => {
   setLoading(true)
-  Promise.all([
+  return Promise.all([
     dispatch(loadAttachedIncidents()),
     dispatch(loadRecentIncidents()),
   ])
   .then(() => dispatch(setLoading(false)))
+  .catch((e) => dispatch(setError(e)))
 }
 
-export const loadAttachedIncidents = () => async (dispatch, getState) => {
+export const loadAttachedIncidents = () => (dispatch, getState) => {
   const { settings, ticket } = getState()
-  const { data, meta } = await rootlyApiClient(settings).get(`/incidents?sort[started_at]=desc&page[size]=1000&filter[zendesk_ticket_id]=${ticket.id}`)
-  const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
-  dispatch(setIncidents(incidents))
+  return rootlyApiClient(settings)
+    .get(`/incidents?sort[started_at]=desc&page[size]=1000&filter[zendesk_ticket_id]=${ticket.id}`)
+    .then(({ data, meta }) => {
+      const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
+      dispatch(setIncidents(incidents))
+    })
+    .catch((e) => dispatch(setError(e)))
 }
 
-export const loadRecentIncidents = () => async (dispatch, getState) => {
+export const loadRecentIncidents = () => (dispatch, getState) => {
   const { settings, ticket } = getState()
-  const { data, meta } = await rootlyApiClient(settings).get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=1`)
-  const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
-  dispatch(setIncidents(incidents))
-  dispatch(setFoundIds(incidents.map(({ id }) => id)))
-  dispatch(setCurrentPage(1))
-  dispatch(setTotalPages(meta.total_pages))
+  return rootlyApiClient(settings)
+    .get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=1`)
+    .then(({ data, meta }) => {
+      const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
+      dispatch(setIncidents(incidents))
+      dispatch(setFoundIds(incidents.map(({ id }) => id)))
+      dispatch(setCurrentPage(1))
+      dispatch(setTotalPages(meta.total_pages))
+    })
+    .catch((e) => dispatch(setError(e)))
 }
 
-export const searchIncidents = (query) => async (dispatch, getState) => {
+export const searchIncidents = (query) => (dispatch, getState) => {
   const { settings, ticket } = getState()
-  const { data, meta } = await rootlyApiClient(settings).get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=1&filter[search]=${query}`)
-  const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
-  dispatch(setSearchQuery(query))
-  dispatch(setIncidents(incidents))
-  dispatch(setFoundIds(incidents.map(({ id }) => id)))
-  dispatch(setCurrentPage(1))
-  dispatch(setTotalPages(meta.total_pages))
+  return rootlyApiClient(settings)
+    .get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=1&filter[search]=${query}`)
+    .then(({ data, meta }) => {
+      const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
+      dispatch(setSearchQuery(query))
+      dispatch(setIncidents(incidents))
+      dispatch(setFoundIds(incidents.map(({ id }) => id)))
+      dispatch(setCurrentPage(1))
+      dispatch(setTotalPages(meta.total_pages))
+    })
+    .catch((e) => dispatch(setError(e)))
 }
 
-export const paginateIncidents = (page) => async (dispatch, getState) => {
+export const paginateIncidents = (page) =>(dispatch, getState) => {
+  const { incidents: { currentPage: oldPage } } = getState()
+
   dispatch(setCurrentPage(page))
+
   const { incidents: { searchQuery }, settings, ticket } = getState()
-  const { data, meta } = await rootlyApiClient(settings).get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=${page}&filter[search]=${searchQuery}`)
-  const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
-  dispatch(setIncidents(incidents))
-  dispatch(setFoundIds(incidents.map(({ id }) => id)))
+
+  return rootlyApiClient(settings)
+    .get(`/incidents?sort[started_at]=desc&page[size]=5&page[number]=${page}&filter[search]=${searchQuery}`)
+    .then(({ data, meta }) => {
+      const incidents = data.map(({ id, attributes }) => ({ id, ...attributes }))
+      dispatch(setIncidents(incidents))
+      dispatch(setFoundIds(incidents.map(({ id }) => id)))
+    })
+    .catch((e) => {
+      dispatch(setCurrentPage(oldPage))
+      dispatch(setError(e))
+    })
 }
 
-export const createIncident = () => async (dispatch, getState) => {
+export const createIncident = () => (dispatch, getState) => {
   dispatch(setIncident({ id: "new", syncing: true }))
   const { settings, ticket } = getState()
-  const { data, meta } = await rootlyApiClient(settings).post("/incidents", {
-    data: {
-      type: "incidents",
-      attributes: {
-        title: ticket.subject,
-        zendesk_ticket_id: ticket.id,
-        zendesk_ticket_url: ticket.url,
+  return rootlyApiClient(settings)
+    .post("/incidents", {
+      data: {
+        type: "incidents",
+        attributes: {
+          title: ticket.subject,
+          zendesk_ticket_id: ticket.id,
+          zendesk_ticket_url: ticket.url,
+        }
       }
-    }
-  })
-  dispatch(setIncident({ id: data.id, ...data.attributes }))
-  dispatch(setIncident({ id: "new", syncing: false }))
+    })
+    .then(({ data, meta }) => {
+      dispatch(setIncident({ id: data.id, ...data.attributes }))
+      dispatch(setIncident({ id: "new", syncing: false }))
+    })
+    .catch((e) => {
+      dispatch(setIncident({ id: "new", syncing: false }))
+      dispatch(setError(e))
+    })
 }

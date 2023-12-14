@@ -34,6 +34,12 @@ class RootlyApi {
       body: typeof body === "object" ? JSON.stringify(body) : body
     })
     .then((res) => res.json())
+    .then((res) => {
+      if (res.errors) {
+        return Promise.reject(new Error(res.errors[0].title))
+      }
+      return res
+    })
   }
 }
 
