@@ -9,6 +9,9 @@
       "apiKey": {
         "label": "Rootly API key",
         "helpText": "Generate a Rootly API key at [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
+      },
+      "apiUrl": {
+        "label": "Rootly API URL"
       }
     }
   },
