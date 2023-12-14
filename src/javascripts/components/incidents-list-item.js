@@ -36,7 +36,7 @@ export default function IncidentsListItem({ incident }) {
             </Anchor>
           </Row>
           <Row alignItems="center">
-            <Tag isPill style={{marginRight: "1em"}}>{formattedStatus(incident.status)}</Tag>
+            <Tag isPill style={{marginRight: "1em"}} hue={statusHue(incident.status)}>{formattedStatus(incident.status)}</Tag>
             <Span hue="grey" size="small">{startedAtDate} {startedAtTime}</Span>
           </Row>
         </Col>
@@ -57,5 +57,18 @@ function formattedStatus(status) {
       return 'Active'
     default:
       return status[0].toUpperCase() + status.slice(1)
+  }
+}
+
+function statusHue(status) {
+  switch (status) {
+    case 'started':
+      return 'blue'
+    case 'mitigated':
+      return 'yellow'
+    case 'resolved':
+      return 'green'
+    default:
+      return 'grey'
   }
 }
