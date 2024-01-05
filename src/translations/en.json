@@ -2,8 +2,8 @@
   "app": {
     "name": "Rootly",
     "short_description": "View Rootly incidents and attach tickets",
-    "long_description": "Connect support agents to Rootly with a view of recent and related incidents inside Zendesk.\n\n- Attach tickets to new or existing incidents\n- View recent incidents\n- Create new incidents\n\nFor more information refer to [Rootly's Zendesk integration documentation](https://docs.rootly.com/integrations/zendesk).",
-    "installation_instructions": "Click the Install button above to install the Rootly Zendesk app. Then go to [rootly.com/account/api-keys](https://rootly.com/account/api-keys) and generate an API key to use when configuring the app.",
+    "long_description": "### Declare Rootly incidents from Zendesk\n\nConnect support agents to Rootly with a view of recent and related incidents inside Zendesk.\n\n* Attach tickets to new or existing incidents\n* View recent incidents\n* Create new incidents\n\nFor more information refer to [Rootly's Zendesk integration documentation](https://docs.rootly.com/integrations/zendesk).\n\n### About Rootly\n\nRootly is the #1 ranked incident management platform used by 100s of fast-growing companies. Manage incidents directly from Slack. Automate tedious processes. Integrates with PagerDuty, Opsgenie, Jira, Google Docs, 30+ tools.",
+    "installation_instructions": "If you're not a Rootly customer and you're interested in learning more about how Rootly can streamline your incident management, please visit [rootly.com](https://rootly.com).\n\n### Getting Started\n\n1. First generate a Rootly API key by going to [User Settings → API Keys](https://rootly.com/account/api-keys).\n2. Click the Install button above (on this page) to install the Rootly app in your Zendesk account.\n3. Enter your Rootly API key generated in step 1 in the API key field.\n4. Navigate to a support ticket and view the Rootly app in the sidebar. If you're asked to install the integration please do so.\n\n### Support\n\nVisit [rootly.com/help](https://rootly.com/help) for help and support using the Rootly Zendesk app.",
     "title": "Rootly",
     "parameters": {
       "apiKey": {
