@@ -20,10 +20,13 @@ class TranslationsPlugin {
   apply (compiler) {
     // Specifies webpack's event hook to attach itself.
     compiler.hooks.emit.tapAsync('TranslationsPlugin', (compilation, callback) => {
-      Object.assign(
-        compilation.assets,
-        buildMarketplaceTranslationFile('en.json', this.options.path)
-      )
+      const files = fs.readdirSync(this.options.path).filter(f => f.endsWith('.json'))
+      files.forEach(filename => {
+        Object.assign(
+          compilation.assets,
+          buildMarketplaceTranslationFile(filename, this.options.path)
+        )
+      })
       callback()
     })
   }
