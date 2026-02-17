@@ -53,7 +53,7 @@ export const toggleAttached = (incident) => async (dispatch, getState) => {
     zendesk_ticket_url: attached ? null : ticket.url
   }
   dispatch(setIncident({ ...incident, syncing: true }))
-  const { data, meta } = await rootlyApiClient.patch(`/incidents/${incident.id}`, {
+  await rootlyApiClient.patch(`/incidents/${incident.id}`, {
     data: {
       type: 'incidents',
       attributes: changedAttributes
@@ -86,8 +86,7 @@ export const loadAttachedIncidents = () => (dispatch, getState) => {
     .catch((e) => dispatch(setError(e)))
 }
 
-export const loadRecentIncidents = () => (dispatch, getState) => {
-  const { ticket } = getState()
+export const loadRecentIncidents = () => (dispatch) => {
   return rootlyApiClient.get('/incidents', {
     page: { size: 5, number: 1 },
     sort: { started_at: 'desc' }
@@ -102,8 +101,7 @@ export const loadRecentIncidents = () => (dispatch, getState) => {
     .catch((e) => dispatch(setError(e)))
 }
 
-export const searchIncidents = (query) => (dispatch, getState) => {
-  const { ticket } = getState()
+export const searchIncidents = (query) => (dispatch) => {
   return rootlyApiClient.get('/incidents', {
     filter: { search: query },
     page: { size: 5, number: 1 },
@@ -121,7 +119,7 @@ export const searchIncidents = (query) => (dispatch, getState) => {
 }
 
 export const paginateIncidents = (page) => (dispatch, getState) => {
-  const { incidents: { searchQuery, currentPage: oldPage }, ticket } = getState()
+  const { incidents: { searchQuery, currentPage: oldPage } } = getState()
 
   dispatch(setCurrentPage(page))
 

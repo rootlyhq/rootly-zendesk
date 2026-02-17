@@ -29,7 +29,7 @@ This is a Zendesk App Framework (ZAF) v2 app that integrates Rootly incident man
 - **ZAF Proxy** (production): uses `zafClient.request()` with `secure: true` to keep the API key hidden via `{{setting.apiKey}}` template
 - **Direct Fetch** (development): uses `fetch()` with the API key directly when running against non-production API URLs
 
-**UI Components:** Uses `@zendeskgarden/react-*` component library (v8) with `styled-components` for theming. Components are in `src/javascripts/components/`.
+**UI Components:** Uses `@zendeskgarden/react-*` component library (v9) with `styled-components` for theming. Components are in `src/javascripts/components/`.
 
 **I18n:** Translations are in `src/translations/en.json`. Custom webpack loaders in `webpack/` handle translation processing at build time. The `I18n` module (`src/javascripts/lib/i18n.js`) provides a `t(key, vars)` function for lookups.
 

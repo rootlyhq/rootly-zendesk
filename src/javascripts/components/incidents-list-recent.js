@@ -14,7 +14,6 @@ import IncidentsListItem from '../../javascripts/components/incidents-list-item'
 export default function IncidentsListRecent () {
   const dispatch = useDispatch()
   const { entities, foundIds, totalPages, currentPage } = useSelector((state) => state.incidents)
-  const ticket = useSelector((state) => state.ticket)
   const found = foundIds.map((id) => entities[id])
 
   const debouncedSearchIncidents = debounce((ev) => dispatch(searchIncidents(ev.target.value)), 250)

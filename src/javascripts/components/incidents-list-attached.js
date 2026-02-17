@@ -11,7 +11,6 @@ import IncidentsListItem from '../../javascripts/components/incidents-list-item'
 import Card from '../../javascripts/components/card'
 
 export default function IncidentsListAttached () {
-  const loading = useSelector((state) => state.incidents.loading)
   const incidents = useSelector((state) => state.incidents.entities)
   const ticket = useSelector((state) => state.ticket)
   const attached = Object.values(incidents).filter((incident) => incident.zendesk_ticket_id === ticket.id)

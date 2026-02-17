@@ -1,11 +1,8 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import I18n from '../../javascripts/lib/i18n'
-import { resizeContainer, escapeSpecialChars as escape } from '../../javascripts/lib/helpers'
 import App from '../../javascripts/components/app'
 import RootlyApi from '../../javascripts/lib/rootly-api'
-
-const MAX_HEIGHT = 1000
 
 export async function start (zafClient, root) {
   const currentUser = (await zafClient.get('currentUser')).currentUser

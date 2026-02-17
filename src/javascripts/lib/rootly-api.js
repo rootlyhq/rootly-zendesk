@@ -2,8 +2,6 @@ import qs from 'qs'
 
 const version = require('../../../package.json').version
 
-const zafClient = null
-
 class RootlyApi {
   initialize (zafClient) {
     this.zafClient = zafClient
