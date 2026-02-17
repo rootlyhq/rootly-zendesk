@@ -5,12 +5,12 @@ import { createStore } from '../../javascripts/redux/store'
 import { loadIncidents } from '../../javascripts/redux/slices/incidents'
 import Incidents from '../../javascripts/components/incidents'
 
-export default function App({ ticket, zafClient }) {
+export default function App ({ ticket, zafClient }) {
   const store = createStore({ ticket })
 
   store.subscribe(() => {
     setTimeout(() => {
-      const height = document.body.querySelector(".main").clientHeight + 48
+      const height = document.body.querySelector('.main').clientHeight + 48
       zafClient.invoke('resize', { height })
     }, 100)
   })

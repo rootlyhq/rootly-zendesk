@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = null
 
 const ticketSlice = createSlice({
-  name: "ticket",
+  name: 'ticket',
   initialState,
   reducers: {
     loadTicket: (state, action) => action.payload

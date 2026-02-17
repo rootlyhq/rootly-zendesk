@@ -1,11 +1,11 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  apiUrl: 'https://api.rootly.com/v1',
+  apiUrl: 'https://api.rootly.com/v1'
 }
 
 const settingsSlice = createSlice({
-  name: "settings",
+  name: 'settings',
   initialState,
   reducers: {
     loadSettings: (state, action) => action.payload

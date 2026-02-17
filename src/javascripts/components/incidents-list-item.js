@@ -5,48 +5,48 @@ import { Row, Col } from '@zendeskgarden/react-grid'
 import { Span } from '@zendeskgarden/react-typography'
 import { Tag } from '@zendeskgarden/react-tags'
 import { Dots } from '@zendeskgarden/react-loaders'
-import PlusIcon from '@zendeskgarden/svg-icons/src/12/plus-fill.svg';
-import MinusIcon from '@zendeskgarden/svg-icons/src/12/dash-fill.svg';
+import PlusIcon from '@zendeskgarden/svg-icons/src/12/plus-fill.svg'
+import MinusIcon from '@zendeskgarden/svg-icons/src/12/dash-fill.svg'
 import I18n from '../../javascripts/lib/i18n'
 import { toggleAttached } from '../../javascripts/redux/slices/incidents'
 import Card from '../../javascripts/components/card'
 
-export default function IncidentsListItem({ incident }) {
+export default function IncidentsListItem ({ incident }) {
   const dispatch = useDispatch()
   const syncing = useSelector((state) => state.incidents.entities[incident.id].syncing)
   const ticket = useSelector((state) => state.ticket)
   const attached = incident.zendesk_ticket_id === ticket.id
   const startedAtDate = new Date(incident.started_at).toLocaleDateString(undefined, {
-    year: "numeric",
-    month: "short",
-    day: "numeric"
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric'
   })
   const startedAtTime = new Date(incident.started_at).toLocaleTimeString(undefined, {
-    hour: "numeric",
-    minute: "numeric"
+    hour: 'numeric',
+    minute: 'numeric'
   })
 
   return (
     <Card>
-      <Row alignItems="center" justifyContent="between">
+      <Row alignItems='center' justifyContent='between'>
         <Col size={8}>
           <Row>
             <Anchor href={incident.url} isExternal>
               <Span isBold>#{incident.sequential_id}</Span> {incident.title}
             </Anchor>
           </Row>
-          <Row alignItems="center">
-            <Tag isPill style={{margin: "1em 1em 0 0"}} hue={statusHue(incident.status)}>{formattedStatus(incident.status)}</Tag>
-            {incident.severity && <Tag isPill style={{margin: "1em 1em 0 0"}} hue={statusHue(incident.severity.data.attributes.severity)}>{incident.severity.data.attributes.name}</Tag>}
+          <Row alignItems='center'>
+            <Tag isPill style={{ margin: '1em 1em 0 0' }} hue={statusHue(incident.status)}>{formattedStatus(incident.status)}</Tag>
+            {incident.severity && <Tag isPill style={{ margin: '1em 1em 0 0' }} hue={statusHue(incident.severity.data.attributes.severity)}>{incident.severity.data.attributes.name}</Tag>}
           </Row>
-          <Row alignItems="center">
-            <Span hue="grey" size="small" style={{marginTop: "1em"}}>{startedAtDate} {startedAtTime}</Span>
+          <Row alignItems='center'>
+            <Span hue='grey' size='small' style={{ marginTop: '1em' }}>{startedAtDate} {startedAtTime}</Span>
           </Row>
         </Col>
-        <Col size={4} textAlign="end">
-          <Button onClick={() => dispatch(toggleAttached(incident))} size="small" style={{flex: "none"}}>
+        <Col size={4} textAlign='end'>
+          <Button onClick={() => dispatch(toggleAttached(incident))} size='small' style={{ flex: 'none' }}>
             <Button.StartIcon>{syncing ? (<Dots />) : (attached ? <MinusIcon /> : <PlusIcon />)}</Button.StartIcon>
-            {I18n.t(`buttons.${attached ? "detach" : "attach"}${syncing ? "ing" : ""}`)}
+            {I18n.t(`buttons.${attached ? 'detach' : 'attach'}${syncing ? 'ing' : ''}`)}
           </Button>
         </Col>
       </Row>
@@ -54,7 +54,7 @@ export default function IncidentsListItem({ incident }) {
   )
 }
 
-function formattedStatus(status) {
+function formattedStatus (status) {
   switch (status) {
     case 'started':
       return 'Active'
@@ -63,7 +63,7 @@ function formattedStatus(status) {
   }
 }
 
-function statusHue(status) {
+function statusHue (status) {
   switch (status) {
     case 'started':
       return 'blue'

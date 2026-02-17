@@ -12,7 +12,7 @@ export const CLIENT = {
     if (prop === 'ticket') {
       return Promise.resolve({
         ticket: {
-          id: 10,
+          id: 10
         }
       })
     }
@@ -24,19 +24,19 @@ export const CLIENT = {
   context: () => {
     return Promise.resolve({
       account: {
-        subdomain: "test"
+        subdomain: 'test'
       }
     })
   },
   metadata: () => {
     return Promise.resolve({
       settings: {
-        apiKey: "mock-api-key",
-        apiUrl: "http://api.test.com"
+        apiKey: 'mock-api-key',
+        apiUrl: 'http://api.test.com'
       }
-    })  
+    })
   },
   request: () => {
-    return Promise.resolve({data: []})
+    return Promise.resolve({ data: [] })
   }
 }

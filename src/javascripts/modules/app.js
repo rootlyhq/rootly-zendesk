@@ -7,7 +7,7 @@ import RootlyApi from '../../javascripts/lib/rootly-api'
 
 const MAX_HEIGHT = 1000
 
-export async function start(zafClient, root) {
+export async function start (zafClient, root) {
   const currentUser = (await zafClient.get('currentUser')).currentUser
 
   if (!root) {
@@ -18,8 +18,8 @@ export async function start(zafClient, root) {
 
   await RootlyApi.initialize(zafClient)
 
-  const subdomain = await zafClient.context().then(({ account: {subdomain} }) => subdomain)
-  const ticket = await zafClient.get("ticket").then(({ ticket }) => ticket)
+  const subdomain = await zafClient.context().then(({ account: { subdomain } }) => subdomain)
+  const ticket = await zafClient.get('ticket').then(({ ticket }) => ticket)
 
   ticket.id = ticket.id.toString()
   ticket.url = `https://${subdomain}.zendesk.com/agent/tickets/${ticket.id}`

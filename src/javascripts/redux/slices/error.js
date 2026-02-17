@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = null
 
 const errorSlice = createSlice({
-  name: "error",
+  name: 'error',
   initialState,
   reducers: {
     clearError: (state) => {

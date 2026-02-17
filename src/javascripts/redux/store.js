@@ -9,7 +9,7 @@ export const createStore = (preloadedState) => configureStore({
     error: errorReducer,
     incidents: incidentsReducer,
     ticket: ticketReducer,
-    settings: settingsReducer,
+    settings: settingsReducer
   },
   preloadedState
 })

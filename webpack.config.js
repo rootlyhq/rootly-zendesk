@@ -4,7 +4,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const TranslationsPlugin = require('./webpack/translations-plugin')
-const TerserPlugin = require("terser-webpack-plugin")
+const TerserPlugin = require('terser-webpack-plugin')
 
 const externalAssets = {
   js: [
@@ -15,7 +15,7 @@ const externalAssets = {
 module.exports = {
   entry: {
     app: [
-      '@babel/polyfill',
+      'core-js/stable',
       './src/javascripts/locations/ticket_sidebar.js',
       './src/index.css'
     ]
@@ -28,9 +28,9 @@ module.exports = {
     minimize: true,
     minimizer: [
       new TerserPlugin({
-        extractComments: false,
-      }),
-    ],
+        extractComments: false
+      })
+    ]
   },
   module: {
     rules: [
@@ -60,10 +60,10 @@ module.exports = {
         test: /\.svg$/,
         use: [
           {
-            loader: 'react-svg-loader',
-          },
-        ],
-      },
+            loader: 'react-svg-loader'
+          }
+        ]
+      }
     ]
   },
 

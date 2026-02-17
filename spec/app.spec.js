@@ -8,7 +8,7 @@ describe('App', () => {
   let root = null
 
   beforeAll(() => {
-    window.fetch = () => Promise.resolve({json: () => Promise.resolve({ data: [], meta: {total_pages: 0} })})
+    window.fetch = () => Promise.resolve({ json: () => Promise.resolve({ data: [], meta: { total_pages: 0 } }) })
     appContainer = document.createElement('section')
     appContainer.classList.add('main')
     document.body.appendChild(appContainer)

@@ -2,7 +2,7 @@ import TranslationsLoader from '../../../webpack/translations-loader'
 
 let translations = {}
 
-function t(key, vars = {}) {
+function t (key, vars = {}) {
   let txt = translations[key]
   Object.keys(vars).forEach((k) => {
     txt = txt.replace(`%{${k}}`, vars[k])
@@ -10,7 +10,7 @@ function t(key, vars = {}) {
   return txt
 }
 
-function loadTranslations(locale) {
+function loadTranslations (locale) {
   const loaded = require(`../../translations/${locale.split('-')[0]}.json`)
   translations = TranslationsLoader.flatten(loaded)
 }

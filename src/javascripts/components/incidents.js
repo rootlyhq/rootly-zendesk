@@ -6,21 +6,23 @@ import IncidentsListAttached from '../../javascripts/components/incidents-list-a
 import IncidentsListRecent from '../../javascripts/components/incidents-list-recent'
 import ErrorNotice from '../../javascripts/components/error-notice'
 
-export default function Incidents() {
+export default function Incidents () {
   const loading = useSelector((state) => state.incidents.loading)
 
-  if (loading) return (
-    <Grid>
-      <Row>
-        <Col textAlign="center">
-          <Spinner size="32" />
-        </Col>
-      </Row>
-    </Grid>
-  )
+  if (loading) {
+    return (
+      <Grid>
+        <Row>
+          <Col textAlign='center'>
+            <Spinner size='32' />
+          </Col>
+        </Row>
+      </Grid>
+    )
+  }
 
   return (
-    <Grid gutters="xs">
+    <Grid gutters='xs'>
       <Row>
         <Col>
           <ErrorNotice />
