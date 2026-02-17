@@ -9,7 +9,7 @@ export default function ErrorNotice () {
 
   if (!error) return null
 
-  useEffect(() => console.log(error), [])
+  useEffect(() => { console.error('[Rootly]', error) }, [error])
 
   if (!error.api || !error.message) {
     error.message = 'Internal error occurred. Please try again or contact Rootly support.'
