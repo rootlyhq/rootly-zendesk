@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "Rootly घटनाएं देखें और टिकट संलग्न करें",
+    "long_description": "### Zendesk से Rootly घटनाएं घोषित करें\n\nZendesk के भीतर हाल की और संबंधित घटनाओं के दृश्य के साथ सहायता एजेंटों को Rootly से जोड़ें।\n\n* नई या मौजूदा घटनाओं में टिकट संलग्न करें\n* हाल की घटनाएं देखें\n* नई घटनाएं बनाएं\n\nअधिक जानकारी के लिए [Rootly का Zendesk एकीकरण दस्तावेज़](https://docs.rootly.com/integrations/zendesk) देखें।\n\n### Rootly के बारे में\n\nRootly #1 रैंक वाला घटना प्रबंधन प्लेटफॉर्म है जिसका उपयोग सैकड़ों तेज़ी से बढ़ती कंपनियां करती हैं। Slack से सीधे घटनाओं का प्रबंधन करें। थकाऊ प्रक्रियाओं को स्वचालित करें। PagerDuty, Opsgenie, Jira, Google Docs और 30+ टूल के साथ एकीकृत।",
+    "installation_instructions": "यदि आप Rootly के ग्राहक नहीं हैं और यह जानना चाहते हैं कि Rootly आपकी घटना प्रबंधन को कैसे सुव्यवस्थित कर सकता है, तो कृपया [rootly.com](https://rootly.com) पर जाएं।\n\n### शुरू करना\n\n1. सबसे पहले [उपयोगकर्ता सेटिंग्स → API कुंजियां](https://rootly.com/account/api-keys) पर जाकर एक Rootly API कुंजी बनाएं।\n2. अपने Zendesk खाते में Rootly ऐप इंस्टॉल करने के लिए ऊपर (इस पेज पर) इंस्टॉल बटन पर क्लिक करें।\n3. चरण 1 में बनाई गई अपनी Rootly API कुंजी को API कुंजी फ़ील्ड में दर्ज करें।\n4. एक सहायता टिकट पर नेविगेट करें और साइडबार में Rootly ऐप देखें। यदि एकीकरण इंस्टॉल करने के लिए कहा जाए तो कृपया ऐसा करें।\n\n### सहायता\n\nRootly Zendesk ऐप की मदद और सहायता के लिए [rootly.com/help](https://rootly.com/help) पर जाएं।",
+    "title": "Rootly",
+    "parameters": {
+      "apiKey": {
+        "label": "Rootly API कुंजी",
+        "helpText": "[rootly.com/account/api-keys](https://rootly.com/account/api-keys) पर Rootly API कुंजी बनाएं"
+      },
+      "apiUrl": {
+        "label": "Rootly API URL"
+      }
+    }
+  },
+  "incidents": {
+    "attached": {
+      "header": "संलग्न घटनाएं",
+      "none": "इस टिकट से कोई Rootly घटना संलग्न नहीं है।"
+    },
+    "recent": {
+      "header": "हाल की घटनाएं",
+      "search": "घटनाएं खोजें",
+      "none": "कोई हाल की Rootly घटनाएं नहीं।",
+      "none_found": "\"%{query}\" के लिए कोई Rootly घटना नहीं मिली।"
+    }
+  },
+  "buttons": {
+    "create_incident": "घटना बनाएं",
+    "creating_incident": "घटना बना रहे हैं...",
+    "attach": "संलग्न करें",
+    "attaching": "संलग्न कर रहे हैं...",
+    "detach": "अलग करें",
+    "detaching": "अलग कर रहे हैं..."
+  }
+}

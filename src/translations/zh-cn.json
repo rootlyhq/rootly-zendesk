@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "查看 Rootly 事件并关联工单",
+    "long_description": "### 从 Zendesk 创建 Rootly 事件\n\n在 Zendesk 中为支持代理提供最近和相关事件的视图，将其与 Rootly 连接。\n\n* 将工单关联到新建或现有事件\n* 查看最近的事件\n* 创建新事件\n\n更多信息请参阅 [Rootly 的 Zendesk 集成文档](https://docs.rootly.com/integrations/zendesk)。\n\n### 关于 Rootly\n\nRootly 是排名第一的事件管理平台，被数百家快速成长的公司使用。直接从 Slack 管理事件。自动化繁琐流程。集成 PagerDuty、Opsgenie、Jira、Google Docs 等 30 多种工具。",
+    "installation_instructions": "如果您还不是 Rootly 客户，想了解 Rootly 如何简化您的事件管理，请访问 [rootly.com](https://rootly.com)。\n\n### 开始使用\n\n1. 首先，前往 [用户设置 → API 密钥](https://rootly.com/account/api-keys) 生成一个 Rootly API 密钥。\n2. 点击上方的安装按钮，将 Rootly 应用安装到您的 Zendesk 账户中。\n3. 在 API 密钥字段中输入您在第 1 步生成的 Rootly API 密钥。\n4. 导航到一个支持工单，在侧边栏中查看 Rootly 应用。如果系统提示安装集成，请按照提示操作。\n\n### 支持\n\n访问 [rootly.com/help](https://rootly.com/help) 获取 Rootly Zendesk 应用的帮助和支持。",
+    "title": "Rootly",
+    "parameters": {
+      "apiKey": {
+        "label": "Rootly API 密钥",
+        "helpText": "在 [rootly.com/account/api-keys](https://rootly.com/account/api-keys) 生成 Rootly API 密钥"
+      },
+      "apiUrl": {
+        "label": "Rootly API 网址"
+      }
+    }
+  },
+  "incidents": {
+    "attached": {
+      "header": "已关联的事件",
+      "none": "没有 Rootly 事件关联到此工单。"
+    },
+    "recent": {
+      "header": "最近的事件",
+      "search": "搜索事件",
+      "none": "没有最近的 Rootly 事件。",
+      "none_found": "未找到与\"%{query}\"相关的 Rootly 事件。"
+    }
+  },
+  "buttons": {
+    "create_incident": "创建事件",
+    "creating_incident": "正在创建事件...",
+    "attach": "关联",
+    "attaching": "正在关联...",
+    "detach": "取消关联",
+    "detaching": "正在取消关联..."
+  }
+}

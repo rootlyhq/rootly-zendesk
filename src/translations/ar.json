@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "عرض حوادث Rootly وإرفاق التذاكر",
+    "long_description": "### الإبلاغ عن حوادث Rootly من Zendesk\n\nاربط وكلاء الدعم بـ Rootly مع عرض للحوادث الأخيرة والمتعلقة داخل Zendesk.\n\n* إرفاق التذاكر بحوادث جديدة أو قائمة\n* عرض الحوادث الأخيرة\n* إنشاء حوادث جديدة\n\nلمزيد من المعلومات، راجع [وثائق تكامل Zendesk الخاصة بـ Rootly](https://docs.rootly.com/integrations/zendesk).\n\n### حول Rootly\n\nRootly هي منصة إدارة الحوادث الأولى المستخدمة من قبل مئات الشركات سريعة النمو. أدر الحوادث مباشرة من Slack. أتمت العمليات المملة. تتكامل مع PagerDuty وOpsgenie وJira وGoogle Docs وأكثر من 30 أداة.",
+    "installation_instructions": "إذا لم تكن عميلاً لـ Rootly وترغب في معرفة المزيد حول كيفية تبسيط Rootly لإدارة الحوادث لديك، يرجى زيارة [rootly.com](https://rootly.com).\n\n### البدء\n\n1. أولاً، قم بإنشاء مفتاح API لـ Rootly بالذهاب إلى [إعدادات المستخدم → مفاتيح API](https://rootly.com/account/api-keys).\n2. انقر على زر التثبيت أعلاه (في هذه الصفحة) لتثبيت تطبيق Rootly في حساب Zendesk الخاص بك.\n3. أدخل مفتاح API لـ Rootly الذي تم إنشاؤه في الخطوة 1 في حقل مفتاح API.\n4. انتقل إلى تذكرة دعم واعرض تطبيق Rootly في الشريط الجانبي. إذا طُلب منك تثبيت التكامل، يرجى القيام بذلك.\n\n### الدعم\n\nقم بزيارة [rootly.com/help](https://rootly.com/help) للحصول على المساعدة والدعم لتطبيق Rootly Zendesk.",
+    "title": "Rootly",
+    "parameters": {
+      "apiKey": {
+        "label": "مفتاح API لـ Rootly",
+        "helpText": "قم بإنشاء مفتاح API لـ Rootly في [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
+      },
+      "apiUrl": {
+        "label": "عنوان API لـ Rootly"
+      }
+    }
+  },
+  "incidents": {
+    "attached": {
+      "header": "الحوادث المرفقة",
+      "none": "لا توجد حوادث Rootly مرفقة بهذه التذكرة."
+    },
+    "recent": {
+      "header": "الحوادث الأخيرة",
+      "search": "البحث عن حوادث",
+      "none": "لا توجد حوادث Rootly حديثة.",
+      "none_found": "لم يتم العثور على حوادث Rootly لـ \"%{query}\"."
+    }
+  },
+  "buttons": {
+    "create_incident": "إنشاء حادث",
+    "creating_incident": "جاري إنشاء الحادث...",
+    "attach": "إرفاق",
+    "attaching": "جاري الإرفاق...",
+    "detach": "إلغاء الإرفاق",
+    "detaching": "جاري إلغاء الإرفاق..."
+  }
+}

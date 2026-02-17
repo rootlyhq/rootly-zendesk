@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "Voir les incidents Rootly et associer des tickets",
+    "long_description": "### Déclarer des incidents Rootly depuis Zendesk\n\nConnectez les agents de support à Rootly avec une vue des incidents récents et associés dans Zendesk.\n\n* Associer des tickets à des incidents nouveaux ou existants\n* Voir les incidents récents\n* Créer de nouveaux incidents\n\nPour plus d'informations, consultez la [documentation d'intégration Zendesk de Rootly](https://docs.rootly.com/integrations/zendesk).\n\n### À propos de Rootly\n\nRootly est la plateforme de gestion des incidents n°1 utilisée par des centaines d'entreprises en forte croissance. Gérez les incidents directement depuis Slack. Automatisez les processus fastidieux. S'intègre avec PagerDuty, Opsgenie, Jira, Google Docs et plus de 30 outils.",
+    "installation_instructions": "Si vous n'êtes pas encore client Rootly et souhaitez en savoir plus sur la façon dont Rootly peut simplifier votre gestion des incidents, veuillez visiter [rootly.com](https://rootly.com).\n\n### Premiers pas\n\n1. Commencez par générer une clé API Rootly en allant dans [Paramètres utilisateur → Clés API](https://rootly.com/account/api-keys).\n2. Cliquez sur le bouton Installer ci-dessus (sur cette page) pour installer l'application Rootly dans votre compte Zendesk.\n3. Entrez votre clé API Rootly générée à l'étape 1 dans le champ de clé API.\n4. Accédez à un ticket de support et consultez l'application Rootly dans la barre latérale. Si l'installation de l'intégration vous est demandée, veuillez le faire.\n\n### Support\n\nVisitez [rootly.com/help](https://rootly.com/help) pour obtenir de l'aide et du support pour l'application Rootly Zendesk.",
+    "title": "Rootly",
+    "parameters": {
+      "apiKey": {
+        "label": "Clé API Rootly",
+        "helpText": "Générez une clé API Rootly sur [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
+      },
+      "apiUrl": {
+        "label": "URL de l'API Rootly"
+      }
+    }
+  },
+  "incidents": {
+    "attached": {
+      "header": "Incidents associés",
+      "none": "Aucun incident Rootly associé à ce ticket."
+    },
+    "recent": {
+      "header": "Incidents récents",
+      "search": "Rechercher des incidents",
+      "none": "Aucun incident Rootly récent.",
+      "none_found": "Aucun incident Rootly trouvé pour \"%{query}\"."
+    }
+  },
+  "buttons": {
+    "create_incident": "Créer un incident",
+    "creating_incident": "Création de l'incident...",
+    "attach": "Associer",
+    "attaching": "Association en cours...",
+    "detach": "Dissocier",
+    "detaching": "Dissociation en cours..."
+  }
+}

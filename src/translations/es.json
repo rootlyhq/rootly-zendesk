@@ -1,0 +1,38 @@
+{
+  "app": {
+    "name": "Rootly",
+    "short_description": "Ver incidentes de Rootly y adjuntar tickets",
+    "long_description": "### Declarar incidentes de Rootly desde Zendesk\n\nConecta a los agentes de soporte con Rootly con una vista de incidentes recientes y relacionados dentro de Zendesk.\n\n* Adjuntar tickets a incidentes nuevos o existentes\n* Ver incidentes recientes\n* Crear nuevos incidentes\n\nPara más información, consulte la [documentación de integración de Zendesk de Rootly](https://docs.rootly.com/integrations/zendesk).\n\n### Acerca de Rootly\n\nRootly es la plataforma de gestión de incidentes número 1, utilizada por cientos de empresas en rápido crecimiento. Gestione incidentes directamente desde Slack. Automatice procesos tediosos. Se integra con PagerDuty, Opsgenie, Jira, Google Docs y más de 30 herramientas.",
+    "installation_instructions": "Si aún no es cliente de Rootly y desea obtener más información sobre cómo Rootly puede optimizar su gestión de incidentes, visite [rootly.com](https://rootly.com).\n\n### Primeros pasos\n\n1. Primero genere una clave API de Rootly en [Configuración de usuario → Claves API](https://rootly.com/account/api-keys).\n2. Haga clic en el botón Instalar de arriba (en esta página) para instalar la aplicación Rootly en su cuenta de Zendesk.\n3. Ingrese su clave API de Rootly generada en el paso 1 en el campo de clave API.\n4. Navegue a un ticket de soporte y vea la aplicación Rootly en la barra lateral. Si se le solicita instalar la integración, hágalo.\n\n### Soporte\n\nVisite [rootly.com/help](https://rootly.com/help) para obtener ayuda y soporte con la aplicación Rootly Zendesk.",
+    "title": "Rootly",
+    "parameters": {
+      "apiKey": {
+        "label": "Clave API de Rootly",
+        "helpText": "Genere una clave API de Rootly en [rootly.com/account/api-keys](https://rootly.com/account/api-keys)"
+      },
+      "apiUrl": {
+        "label": "URL de API de Rootly"
+      }
+    }
+  },
+  "incidents": {
+    "attached": {
+      "header": "Incidentes adjuntos",
+      "none": "No hay incidentes de Rootly adjuntos a este ticket."
+    },
+    "recent": {
+      "header": "Incidentes recientes",
+      "search": "Buscar incidentes",
+      "none": "No hay incidentes recientes de Rootly.",
+      "none_found": "No se encontraron incidentes de Rootly para \"%{query}\"."
+    }
+  },
+  "buttons": {
+    "create_incident": "Crear incidente",
+    "creating_incident": "Creando incidente...",
+    "attach": "Adjuntar",
+    "attaching": "Adjuntando...",
+    "detach": "Desadjuntar",
+    "detaching": "Desadjuntando..."
+  }
+}
