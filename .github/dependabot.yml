@@ -1,0 +1,38 @@
+version: 2
+
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 20
+    cooldown:
+      default-days: 3
+      semver-major-days: 7
+    groups:
+      zendeskgarden:
+        applies-to: version-updates
+        patterns:
+          - "@zendeskgarden/*"
+      reduxjs:
+        applies-to: version-updates
+        patterns:
+          - "@reduxjs/*"
+          - "react-redux"
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - "minor"
+          - "patch"
+        exclude-patterns:
+          - "@zendeskgarden/*"
+          - "@reduxjs/*"
+          - "react-redux"
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 20
+    cooldown:
+      default-days: 3
