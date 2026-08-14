@@ -39,7 +39,7 @@
     "jest-environment-jsdom": "^30.4.1",
     "jest-transform-stub": "^2.0.0",
     "mini-css-extract-plugin": "^2.10.2",
-    "postcss": "^8.5.25",
+    "postcss": "^8.5.26",
     "postcss-import": "^16.1.1",
     "postcss-loader": "^8.2.1",
     "postcss-preset-env": "^11.3.2",
@@ -62,11 +62,11 @@
     "@zendeskgarden/react-tags": "^9.15.7",
     "@zendeskgarden/react-theming": "^9.15.7",
     "@zendeskgarden/react-typography": "^9.15.7",
-    "core-js": "^3.49.0",
+    "core-js": "^3.50.0",
     "qs": "^6.15.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^9.3.0",
-    "styled-components": "^6.5.0"
+    "styled-components": "^6.5.1"
   }
 }
