@@ -40,7 +40,7 @@
     "jest-transform-stub": "^2.0.0",
     "mini-css-extract-plugin": "^2.10.2",
     "postcss": "^8.5.26",
-    "postcss-import": "^16.2.0",
+    "postcss-import": "^17.0.0",
     "postcss-loader": "^8.2.1",
     "postcss-preset-env": "^11.5.0",
     "react-svg-loader": "^3.0.3",
