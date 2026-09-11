@@ -39,15 +39,15 @@
     "jest-environment-jsdom": "^30.5.1",
     "jest-transform-stub": "^2.0.0",
     "mini-css-extract-plugin": "^2.10.2",
-    "postcss": "^8.5.26",
+    "postcss": "^8.5.28",
     "postcss-import": "^17.0.0",
     "postcss-loader": "^8.2.1",
-    "postcss-preset-env": "^11.5.1",
+    "postcss-preset-env": "^11.5.2",
     "react-svg-loader": "^3.0.3",
     "standard": "^17.0.0",
     "terser-webpack-plugin": "^5.6.0",
     "to-camel-case": "^1.0.0",
-    "webpack": "^5.110.2",
+    "webpack": "^5.110.3",
     "webpack-cli": "^7.2.3"
   },
   "dependencies": {
