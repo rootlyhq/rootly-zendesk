@@ -51,7 +51,7 @@
     "webpack-cli": "^7.2.3"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.12.0",
+    "@reduxjs/toolkit": "^2.13.0",
     "@zendeskgarden/css-bedrock": "^10.0.0",
     "@zendeskgarden/react-buttons": "^9.15.8",
     "@zendeskgarden/react-forms": "^9.15.8",
