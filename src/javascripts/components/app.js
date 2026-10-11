@@ -1,4 +1,3 @@
-import React from 'react'
 import { Provider } from 'react-redux'
 import { ThemeProvider, DEFAULT_THEME } from '@zendeskgarden/react-theming'
 import { createStore } from '../../javascripts/redux/store'

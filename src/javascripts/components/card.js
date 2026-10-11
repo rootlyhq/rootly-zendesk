@@ -1,4 +1,3 @@
-import React from 'react'
 import { PALETTE } from '@zendeskgarden/react-theming'
 
 export default function Card ({ style, children }) {

@@ -70,6 +70,14 @@ yarn test
 
 Specs live under the `spec` directory.
 
+## Linting
+
+Code style is [neostandard](https://github.com/neostandard/neostandard) (ESLint flat config in `eslint.config.js`). To lint:
+
+```
+yarn lint
+```
+
 ## Deploying
 
 To check that your app will pass the server-side validation check, run
@@ -95,6 +103,12 @@ Or, to create a zip archive for manual upload, run
 ```
 zcli apps:package dist
 ```
+
+## Releasing
+
+1. Bump `version` in `src/manifest.json` (and `package.json`) and merge to `master`.
+2. Tag the release commit with `v<manifest version>` (e.g. `v1.3`) and push the tag. The `Release` workflow builds the app, checks the tag matches the manifest version, and publishes a GitHub release with the packaged zip attached.
+3. Upload to Zendesk with `yarn build && zcli apps:update dist`.
 
 For more information on the Zendesk CLI please see the [documentation](https://developer.zendesk.com/documentation/apps/app-developer-guide/zcli/).
 

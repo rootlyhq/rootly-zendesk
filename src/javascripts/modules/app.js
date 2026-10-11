@@ -1,4 +1,3 @@
-import React from 'react'
 import { createRoot } from 'react-dom/client'
 import I18n from '../../javascripts/lib/i18n'
 import App from '../../javascripts/components/app'

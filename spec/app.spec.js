@@ -1,4 +1,3 @@
-/* eslint-env jest, browser */
 import { createRoot } from 'react-dom/client'
 import { start as startApp } from '../src/javascripts/modules/app'
 import { CLIENT } from './mocks/mock'

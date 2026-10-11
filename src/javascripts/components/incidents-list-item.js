@@ -1,4 +1,3 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Anchor, Button } from '@zendeskgarden/react-buttons'
 import { Row, Col } from '@zendeskgarden/react-grid'

@@ -1,4 +1,3 @@
-/* eslint-env jest */
 const fs = require('fs')
 const path = require('path')
 const { flatten } = require('../webpack/translations-loader')

@@ -13,7 +13,7 @@ This is a Zendesk App Framework (ZAF) v2 app that integrates Rootly incident man
 - `yarn start` — shortcut for `zcli apps:server dist` (serves built app to Zendesk with `?zcli_apps=true`)
 - `yarn run build` — production build (output to `dist/`)
 - `yarn test` — run Jest tests
-- `yarn lint` — run StandardJS linter
+- `yarn lint` — run ESLint (neostandard config)
 
 ## Architecture
 
@@ -41,7 +41,11 @@ Tests use Jest with jsdom environment. Specs live in `spec/`. The ZAF client is 
 
 ## Linting
 
-Uses [StandardJS](https://standardjs.com/) style — no semicolons, no configuration needed. Run `yarn lint` to check.
+Uses ESLint 10 with the [neostandard](https://github.com/neostandard/neostandard) flat config (`eslint.config.js`) — StandardJS style, no semicolons. Run `yarn lint` to check. JSX uses React's automatic runtime, so components don't `import React`.
+
+## Package Manager
+
+Yarn 4 (pinned via `packageManager`, `node-modules` linker). `.yarnrc.yml` sets `enableScripts: false` — dependency lifecycle scripts never run. Don't re-enable globally; allow-list a single package with `dependenciesMeta` if needed.
 
 ## Deployment
 
@@ -50,3 +54,5 @@ Build with `yarn run build`, then use Zendesk CLI:
 - `zcli apps:create dist` — first-time upload
 - `zcli apps:update dist` — update existing app
 - `zcli apps:package dist` — create zip for manual upload
+
+Releases: bump `src/manifest.json` version, merge, push tag `v<version>` — `.github/workflows/release.yml` builds and attaches the zip to a GitHub release.
