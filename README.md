@@ -107,8 +107,10 @@ zcli apps:package dist
 ## Releasing
 
 1. Bump `version` in `src/manifest.json` (and `package.json`) and merge to `master`.
-2. Tag the release commit with `v<manifest version>` (e.g. `v1.3`) and push the tag. The `Release` workflow builds the app, checks the tag matches the manifest version, and publishes a GitHub release with the packaged zip attached.
-3. Upload to Zendesk with `yarn build && zcli apps:update dist`.
+2. Tag the release commit with `v<manifest version>` (e.g. `v1.3`) and push the tag.
+3. Approve the `zendesk` environment deployment. The `Release` workflow then builds the app, checks the tag matches the manifest version, validates it with Zendesk, publishes a GitHub release with the packaged zip, and uploads it with `zcli apps:update`.
+
+The workflow needs a `zendesk` GitHub environment with variables `ZENDESK_SUBDOMAIN` and `ZENDESK_APP_ID`, and secrets `ZENDESK_EMAIL` and `ZENDESK_API_TOKEN`.
 
 For more information on the Zendesk CLI please see the [documentation](https://developer.zendesk.com/documentation/apps/app-developer-guide/zcli/).
 
