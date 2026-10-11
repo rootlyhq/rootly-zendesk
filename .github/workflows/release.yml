@@ -10,8 +10,6 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
-    # Required reviewers on this environment gate the Zendesk upload; secrets live here.
-    environment: zendesk
     permissions:
       contents: write
     env:

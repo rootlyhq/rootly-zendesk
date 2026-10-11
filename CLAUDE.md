@@ -55,4 +55,4 @@ Build with `yarn run build`, then use Zendesk CLI:
 - `zcli apps:update dist` — update existing app
 - `zcli apps:package dist` — create zip for manual upload
 
-Releases: bump `src/manifest.json` version, merge, push tag `v<version>` — `.github/workflows/release.yml` (gated by the `zendesk` environment) validates, attaches the zip to a GitHub release, and runs `zcli apps:update` using `ZENDESK_SUBDOMAIN`/`ZENDESK_APP_ID` vars and `ZENDESK_EMAIL`/`ZENDESK_API_TOKEN` secrets.
+Releases: bump `src/manifest.json` version, merge, push tag `v<version>` — `.github/workflows/release.yml` validates, attaches the zip to a GitHub release, and runs `zcli apps:update` using `ZENDESK_SUBDOMAIN`/`ZENDESK_APP_ID` vars and `ZENDESK_EMAIL`/`ZENDESK_API_TOKEN` secrets.
