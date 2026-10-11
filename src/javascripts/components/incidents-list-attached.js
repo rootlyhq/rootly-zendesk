@@ -1,8 +1,7 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { createIncident } from '../../javascripts/redux/slices/incidents'
 import { Grid, Row, Col } from '@zendeskgarden/react-grid'
-import { MD, Paragraph, Span } from '@zendeskgarden/react-typography'
+import { MD as Md, Paragraph, Span } from '@zendeskgarden/react-typography'
 import { Button } from '@zendeskgarden/react-buttons'
 import { Dots } from '@zendeskgarden/react-loaders'
 import PlusIcon from '@zendeskgarden/svg-icons/src/12/plus-fill.svg'
@@ -23,7 +22,7 @@ export default function IncidentsListAttached () {
     <Grid gutters={false} style={{ marginBottom: '2em' }}>
       <Row>
         <Col>
-          <MD>{I18n.t('incidents.attached.header')}</MD>
+          <Md>{I18n.t('incidents.attached.header')}</Md>
         </Col>
       </Row>
       <Row>

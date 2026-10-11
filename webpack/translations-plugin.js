@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const { Compilation, sources } = require('webpack')
 const JS_INDENT = 2
 
 const marketplaceKeys = [
@@ -19,15 +20,17 @@ class TranslationsPlugin {
   // Defines `apply` method in it's prototype.
   apply (compiler) {
     // Specifies webpack's event hook to attach itself.
-    compiler.hooks.emit.tapAsync('TranslationsPlugin', (compilation, callback) => {
-      const files = fs.readdirSync(this.options.path).filter(f => f.endsWith('.json'))
-      files.forEach(filename => {
-        Object.assign(
-          compilation.assets,
-          buildMarketplaceTranslationFile(filename, this.options.path)
-        )
-      })
-      callback()
+    compiler.hooks.thisCompilation.tap('TranslationsPlugin', (compilation) => {
+      compilation.hooks.processAssets.tap(
+        { name: 'TranslationsPlugin', stage: Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL },
+        () => {
+          const files = fs.readdirSync(this.options.path).filter(f => f.endsWith('.json'))
+          files.forEach(filename => {
+            const { name, source } = buildMarketplaceTranslationFile(filename, this.options.path)
+            compilation.emitAsset(name, new sources.RawSource(source))
+          })
+        }
+      )
     })
   }
 }
@@ -41,14 +44,9 @@ function buildMarketplaceTranslationFile (filename, filepath) {
     process.exit(1)
   }
 
-  const translationsPath = `../translations/${filename}`
-  const marketplaceTranslations = extractMarketplaceTranslation(translationsInput, filename)
-
   return {
-    [translationsPath]: {
-      size: () => marketplaceTranslations.length,
-      source: () => marketplaceTranslations
-    }
+    name: `translations/${filename}`,
+    source: extractMarketplaceTranslation(translationsInput, filename)
   }
 }
 

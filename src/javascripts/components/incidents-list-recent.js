@@ -1,9 +1,8 @@
-import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { paginateIncidents, searchIncidents } from '../../javascripts/redux/slices/incidents'
 import { Field, Label, MediaInput } from '@zendeskgarden/react-forms'
 import { Grid, Row, Col } from '@zendeskgarden/react-grid'
-import { MD, Paragraph, Span } from '@zendeskgarden/react-typography'
+import { MD as Md, Paragraph, Span } from '@zendeskgarden/react-typography'
 import { OffsetPagination } from '@zendeskgarden/react-pagination'
 import SearchIcon from '@zendeskgarden/svg-icons/src/16/search-stroke.svg'
 import I18n from '../../javascripts/lib/i18n'
@@ -22,7 +21,7 @@ export default function IncidentsListRecent () {
     <Grid gutters={false}>
       <Row>
         <Col>
-          <MD>{I18n.t('incidents.recent.header')}</MD>
+          <Md>{I18n.t('incidents.recent.header')}</Md>
         </Col>
       </Row>
       <Row>

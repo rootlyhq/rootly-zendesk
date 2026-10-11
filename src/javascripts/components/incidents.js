@@ -1,4 +1,3 @@
-import React from 'react'
 import { useSelector } from 'react-redux'
 import { Grid, Row, Col } from '@zendeskgarden/react-grid'
 import { Spinner } from '@zendeskgarden/react-loaders'
