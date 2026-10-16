@@ -25,7 +25,7 @@
   "devDependencies": {
     "@babel/core": "^7.29.7",
     "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
+    "@babel/preset-react": "^8.0.1",
     "@zendeskgarden/svg-icons": "^8.4.0",
     "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
