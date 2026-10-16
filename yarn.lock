@@ -3205,6 +3205,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/stylis@npm:4.2.7":
+  version: 4.2.7
+  resolution: "@types/stylis@npm:4.2.7"
+  checksum: 10c0/01a9679addb3f63951a9c09729564e2205581f2db40875a28b25cc461efc52ba17a711cc50cdb5e7d3a67c5f2cd60580e078c8a69b8df7b67699d89060d2a977
+  languageName: node
+  linkType: hard
+
 "@types/tough-cookie@npm:*":
   version: 4.0.5
   resolution: "@types/tough-cookie@npm:4.0.5"
@@ -7426,7 +7433,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"nanoid@npm:^3.3.19":
+"nanoid@npm:^3.3.19, nanoid@npm:^3.3.20":
   version: 3.3.20
   resolution: "nanoid@npm:3.3.20"
   bin:
@@ -7451,9 +7458,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"neostandard@npm:^0.14.0":
-  version: 0.14.0
-  resolution: "neostandard@npm:0.14.0"
+"neostandard@npm:^0.14.1":
+  version: 0.14.1
+  resolution: "neostandard@npm:0.14.1"
   dependencies:
     "@humanwhocodes/gitignore-to-minimatch": "npm:^1.0.2"
     "@stylistic/eslint-plugin": "npm:5.10.0"
@@ -7467,7 +7474,7 @@ __metadata:
     eslint: ^9.22.0 || ^10.0.0
   bin:
     neostandard: cli.js
-  checksum: 10c0/3b8aeded0bcb7c191056c5dbe370ce4ca88d7e1672abc669b71a5190af80df9bd7182286e4a05c1afebd971a5cc923e501fe752e5dbfb44a37aa9eabe1db0b4c
+  checksum: 10c0/34614da4fbb2ecb34db01fa4547abddacff94c086592851395a9ac4f8dce426abbcc9a229941a6c8a3a65381498243fce6c963d24dd9173ec8223ca653753ec5
   languageName: node
   linkType: hard
 
@@ -8365,7 +8372,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.40, postcss@npm:^8.5.29":
+"postcss@npm:^8.4.40":
   version: 8.5.29
   resolution: "postcss@npm:8.5.29"
   dependencies:
@@ -8373,6 +8380,17 @@ __metadata:
     picocolors: "npm:^1.1.1"
     source-map-js: "npm:^1.2.2"
   checksum: 10c0/5d0c45a511e8ede0fe124d04885877525e69e3c1476f0c8c22ed53f3945bace9ca5ef8578274bdfe916b1cd0301253a52c5dbd8695115fae805cee55465088fc
+  languageName: node
+  linkType: hard
+
+"postcss@npm:^8.5.30":
+  version: 8.5.30
+  resolution: "postcss@npm:8.5.30"
+  dependencies:
+    nanoid: "npm:^3.3.20"
+    picocolors: "npm:^1.1.1"
+    source-map-js: "npm:^1.2.2"
+  checksum: 10c0/219cdc50ba3f2b6d0f8b779c4939514cb9d9f53cc9eb92dae1a06f2d6eb910b2ce339a3ee93e7c893b89e50241509fd92c04f0639af1cdf41a1e13983a476029
   languageName: node
   linkType: hard
 
@@ -8821,8 +8839,8 @@ __metadata:
     jest: "npm:^30.5.2"
     jest-environment-jsdom: "npm:^30.5.2"
     mini-css-extract-plugin: "npm:^2.10.2"
-    neostandard: "npm:^0.14.0"
-    postcss: "npm:^8.5.29"
+    neostandard: "npm:^0.14.1"
+    postcss: "npm:^8.5.30"
     postcss-import: "npm:^17.0.0"
     postcss-loader: "npm:^8.2.1"
     postcss-preset-env: "npm:^11.6.1"
@@ -8830,7 +8848,7 @@ __metadata:
     react: "npm:^18.2.0"
     react-dom: "npm:^18.2.0"
     react-redux: "npm:^9.3.0"
-    styled-components: "npm:^6.5.3"
+    styled-components: "npm:^6.6.0"
     terser-webpack-plugin: "npm:^5.6.0"
     webpack: "npm:^5.111.1"
     webpack-cli: "npm:^7.2.3"
@@ -9253,11 +9271,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styled-components@npm:^6.5.3":
-  version: 6.5.3
-  resolution: "styled-components@npm:6.5.3"
+"styled-components@npm:^6.6.0":
+  version: 6.6.0
+  resolution: "styled-components@npm:6.6.0"
   dependencies:
     "@emotion/is-prop-valid": "npm:1.4.0"
+    "@types/stylis": "npm:4.2.7"
     css-to-react-native: "npm:3.2.0"
     csstype: "npm:3.2.3"
     stylis: "npm:4.3.6"
@@ -9273,7 +9292,7 @@ __metadata:
       optional: true
     react-native:
       optional: true
-  checksum: 10c0/76b525c7cbf4febdf52e6b15eeddb3782bb50e11f078e5d0a299b221067314386c7b05cf703f141f3eb15c541f41b20e43386405322986e441e8bb07324adf06
+  checksum: 10c0/7496a42169119fd042344875fb9247599674df1b884b78a10a03d415a638192432009ed6f9c542db7c898e5ee6292a2cdb887252e0ea4b513361635aa49d3a55
   languageName: node
   linkType: hard
 
