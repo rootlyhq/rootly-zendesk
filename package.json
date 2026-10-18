@@ -23,13 +23,11 @@
     "start": "zcli apps:server dist"
   },
   "devDependencies": {
-    "@babel/core": "^7.29.7",
-    "@babel/preset-env": "^7.29.7",
-    "@babel/preset-react": "^7.29.7",
-    "@zendeskgarden/svg-icons": "^8.4.0",
+    "@babel/core": "^8.0.7",
+    "@babel/preset-env": "^8.0.7",
+    "@babel/preset-react": "^8.0.1",
     "babel-jest": "^30.5.2",
     "babel-loader": "^10.1.1",
-    "babel-plugin-inline-react-svg": "^2.0.2",
     "copy-webpack-plugin": "^14.0.0",
     "css-loader": "^7.1.5",
     "eslint": "^10.12.0",
