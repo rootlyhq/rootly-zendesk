@@ -46,7 +46,7 @@
     "webpack-cli": "^7.2.3"
   },
   "dependencies": {
-    "@reduxjs/toolkit": "^2.13.0",
+    "@reduxjs/toolkit": "^2.14.0",
     "@zendeskgarden/css-bedrock": "^10.0.0",
     "@zendeskgarden/react-buttons": "^9.16.1",
     "@zendeskgarden/react-forms": "^9.16.1",
@@ -61,7 +61,7 @@
     "qs": "^6.16.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-redux": "^9.3.0",
+    "react-redux": "^9.3.1",
     "styled-components": "^6.6.0"
   }
 }
